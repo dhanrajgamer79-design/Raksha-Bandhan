@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Raksha Bandhan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Yatra One', cursive;
+      background: linear-gradient(to bottom, #ffecd2 0%, #fcb69f 100%);
+      color: #4e2500;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .gif {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      border: 3px solid #d49b00;
+    }
+
+    .greeting {
+      font-size: 1.8em;
+      margin: 20px 0;
+      animation: fadeIn 2s ease-in-out;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #d49b00;
+      width: 80%;
+      max-width: 300px;
+      font-family: inherit;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #25D366;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #128C7E;
+    }
+
+    .share-link {
+      margin-top: 15px;
+      word-break: break-word;
+      color: #4e2500;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="HappyRakshaBandhan.gif" alt="Raksha Bandhan" class="gif" />
+    
+    <div class="greeting" id="greetingText">
+      Happy Raksha Bandhan! 💫
+    </div>
+
+    <div id="inputSection">
+      <input type="text" id="nameInput" placeholder="Enter your name..." />
+      <br />
+      <button onclick="shareWhatsApp()">Share with WhatsApp</button>
+    </div>
+
+    <div class="share-link" id="shareLink"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromName = urlParams.get('from');
+
+    if (fromName) {
+      const greetingDiv = document.getElementById('greetingText');
+      greetingDiv.innerText = `💖 Happy Raksha Bandhan from ${decodeURIComponent(fromName)} 💖`;
+      greetingDiv.style.color = '#8B0000';
+    }
+
+    function shareWhatsApp() {
+      const name = document.getElementById('nameInput').value.trim();
+      if (name === "") {
+        alert("Please enter your name.");
+        return;
+      }
+
+      const encodedName = encodeURIComponent(name);
+      const link = `${window.location.origin}${window.location.pathname}?from=${encodedName}`;
+      const message = `🎉 Happy Raksha Bandhan!\nFrom ${name} 💖\nClick to see your greeting:\n${link}`;
+
+      // WhatsApp share URL
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+      // Optional: show fallback link too
+      document.getElementById('shareLink').innerHTML = `Or copy link:<br><a href="${link}" target="_blank">${link}</a>`;
+
+      // Open WhatsApp share
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
+<script async="async" data-cfasync="false" src="//pl27316136.profitableratecpm.com/70feaec41479d519bfc240613daafa93/invoke.js"></script>
+<div id="container-70feaec41479d519bfc240613daafa93"></div>
